@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import {withRouter} from "react-router";
 import axiosClients from "../config/axiosClients";
 import Swal from "sweetalert2";
 
@@ -18,7 +17,6 @@ function EditClient(props) {
         language: '',
         shares: '',
         ads: false,
-        note: '',
         status: ''
     })
     const handleChange = (e) => {
@@ -213,18 +211,6 @@ function EditClient(props) {
                 />
             </div>
             <div className="form-group">
-                <label htmlFor="note">note</label>
-                <input
-                    type="text"
-                    className="form-control"
-                    name="note"
-                    placeholder="note"
-                    defaultValue={client.note}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div className="form-group">
                 <label htmlFor="status">status</label>
                 <input
                     type="text"
@@ -261,4 +247,4 @@ function EditClient(props) {
     )
 }
 
-export default withRouter(EditClient)
+export default EditClient

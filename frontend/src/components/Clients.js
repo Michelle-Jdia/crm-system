@@ -7,7 +7,6 @@ function Clients({
                      lastname,
                      email,
                      phone,
-                     note,
                      onDelete,
                  }) {
 
@@ -17,7 +16,6 @@ function Clients({
             <td>{name} {lastname}</td>
             <td>{phone}</td>
             <td>{email}</td>
-            <td>{note ? note : 'nothing'}</td>
             <td>
                 <Link to={`/clients/${id}/edit`}
                       className={'btn btn-success mr-1'}

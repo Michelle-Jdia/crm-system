@@ -1,10 +1,11 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import axiosClients from "../config/axiosClients";
-import {withRouter} from "react-router";
 import Swal from "sweetalert2";
-
+import axios from "axios";
 
 function AddClient(props) {
+
+    const [ip4, setIP] = useState('');
     const [client, setClient] = useState({
         name: '',
         lastname: '',
@@ -18,21 +19,21 @@ function AddClient(props) {
         language: '',
         shares: '',
         ads: false,
-        note: '',
         status: ''
     })
+
+    //creating function to load ip address from the API
+    const getDataIP = async () => {
+        const res = await axios.get('https://geolocation-db.com/json/')
+        setIP(res.data.IPv4)
+    }
 
     const handleChange = (e) => {
         setClient({
             ...client,
             [e.target.name]: e.target.value,
-        })
-    }
-
-    const handleChkbox = (e) => {
-        setClient({
-            ...client,
-            ads: e.target.checked
+            ads: e.target.checked,
+            ip: ip4
         })
     }
 
@@ -62,6 +63,10 @@ function AddClient(props) {
                 }
             })
     }
+
+    useEffect(() => {
+        getDataIP();
+    }, [])
 
     return (
         <form className="row g-3" onSubmit={handleSubmit}>
@@ -168,7 +173,7 @@ function AddClient(props) {
                     <input className="form-check-input"
                            type="checkbox"
                            name="ads"
-                           onChange={handleChkbox}
+                           onChange={handleChange}
                            defaultValue={client.ads}
 
                     />
@@ -188,4 +193,4 @@ function AddClient(props) {
     )
 }
 
-export default withRouter(AddClient)
+export default AddClient

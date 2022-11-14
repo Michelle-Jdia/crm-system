@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Navbar from './Navbar';
 import Clients from "./Clients";
 import EditClient from "./EditClient";
@@ -10,6 +10,7 @@ import ViewClient from "./ViewClient";
 function App() {
 
     const [clients, setClients] = useState([])
+
 
     const getClients = async () => {
         const response = await axiosClients.get('/customers');
@@ -26,6 +27,7 @@ function App() {
                 }
             })
     }
+
     useEffect(() => {
         getClients();
     }, [])
@@ -63,52 +65,44 @@ function App() {
 
 
     return (
-        <Router>
-            <div className="container-fluid">
-                <Navbar/>
 
-                    <Route exact path={'/'}>
-                        <table className="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">email</th>
-                                <th scope="col">note</th>
-                            </tr>
-                            </thead>
-                            {renderClients()}
-                        </table>
-                    </Route>
+        <div className="container-fluid">
+            <Navbar/>
+            <Switch>
+                <Route exact path={'/'}>
+                    <table className="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">email</th>
+                        </tr>
+                        </thead>
+                        {renderClients()}
+                    </table>
+                </Route>
 
-                    <Route exact path={'/clients'}>
-                        <table className="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Note</th>
-                            </tr>
-                            </thead>
-                            {renderClients()}
-                        </table>
-                    </Route>
+                <Route exact path={'/clients'}>
+                    <table className="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                        </thead>
+                        {renderClients()}
+                    </table>
+                </Route>
 
-                    <Route exact path={'/clients/new'}>
-                        <AddClient/>
-                    </Route>
-                    <Route exact path='/clients/:id/edit'>
-                        <EditClient/>
-                    </Route>
-                    <Route exact path='/clients/:id/view'>
-                        <ViewClient/>
-                    </Route>
+                <Route exact path={'/clients/new'} component={AddClient}/>
+                <Route exact path='/clients/:id/edit' component={EditClient}/>
+                <Route exact path='/clients/:id/view' component={ViewClient}/>
+            </Switch>
+        </div>
 
-            </div>
-        </Router>
     );
 }
 

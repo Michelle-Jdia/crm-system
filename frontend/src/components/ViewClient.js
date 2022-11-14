@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import axiosClients from "../config/axiosClients";
 
-
 function ViewClient(props) {
 
     const {id} = props.match.params;
@@ -19,7 +18,6 @@ function ViewClient(props) {
         language: '',
         shares: '',
         ads: false,
-        note: '',
         status: ''
     })
     const [isOpen, setIsOpen] = useState(true);
@@ -59,7 +57,6 @@ function ViewClient(props) {
                         <th scope="col">IP address</th>
                         <th scope="col">Language</th>
                         <th scope="col">Friends no</th>
-                        <th scope="col">Note</th>
                         <th scope="col">Ads</th>
                         <th scope="col">Status</th>
                     </tr>
@@ -76,7 +73,6 @@ function ViewClient(props) {
                         <td>{client.ip ? client.ip : 'none'}</td>
                         <td>{client.language ? client.language : 'ru'}</td>
                         <td>{client.shares ? client.shares : '0'}</td>
-                        <td>{client.note ? client.note : 'nothing'}</td>
                         <td>{client.ads ? 'yes' : 'no'}</td>
                         <td>{client.status ? 'yes' : 'no'}</td>
                     </tr>
