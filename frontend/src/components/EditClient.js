@@ -3,7 +3,9 @@ import axiosClients from "../config/axiosClients";
 import Swal from "sweetalert2";
 
 function EditClient(props) {
-    const {id} = props.match.params;
+    const { id } = props.match.params;
+    
+    // @todo no no no
     const [client, setClient] = useState({
         name: '',
         lastname: '',
@@ -38,6 +40,7 @@ function EditClient(props) {
         updateClient()
     }
 
+    // @todo use the generic function you created to do api calls.
     const updateClient = () => {
         axiosClients.put(`/customers/${id}`, client)
             .then(res => {

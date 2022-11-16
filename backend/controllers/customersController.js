@@ -1,4 +1,49 @@
+//@todo: change name to Customer / no "S" 
 const Customers = require('../models/Customers');
+
+// @todo remove all comments here and give functions better names. 
+// eg: addCustomer, listAllCustomers, etc...
+
+// @todo remove code duplication and create a generic function that can handle all requests to the database
+/* eg: 
+  const createClient = (req, res, next) => {
+    return async (config) => {
+      try {
+        await config.request(req)
+      } catch (err) {
+        onError && config.onError()
+      } finally {
+        onSuccess && config.onSuccess()
+        next()
+      }
+    }
+  } 
+
+  const cusomerClient = createClient(req, res, next);
+  
+  const config = {
+    request: (req) => {
+      const customer = new customer(req.body);
+      customer.save();
+    }
+  }
+  customerClient(config)
+*/
+
+// @todo write another function to handle the creation of the response.
+/*
+  const createResponseData = ({ message }) => {
+    return {
+      message: message
+    }
+  }
+
+  const data = createResponseData({
+    message: 'New customer added'
+  })
+
+  res.json(data);
+*/
 
 // add Customer
 exports.add = async (req, res, next) => {

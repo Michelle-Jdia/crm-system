@@ -33,6 +33,9 @@ function App() {
     }, [])
 
     //get set clients
+    
+    // @todo remove useless comments
+    // @todo pass a client object to the [<Client client={client}></Client>] like so
     const renderClients = () => {
         return (
             <tbody>

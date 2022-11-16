@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// @todo rename to client 
 function Clients({
                      id,
                      index,

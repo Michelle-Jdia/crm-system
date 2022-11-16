@@ -5,6 +5,7 @@ function ViewClient(props) {
 
     const {id} = props.match.params;
 
+    // @todo no no no 
     const [client, setClient] = useState({
         name: '',
         lastname: '',
@@ -27,6 +28,8 @@ function ViewClient(props) {
         props.history.push('/clients')
     }
 
+    // @todo use the functionm you created to do generic api calls.
+    // ref: https://github.com/IBakeCookies/revar/blob/develop/src/api/supafetch.ts
     useEffect(() => {
         const getClient = () => {
             axiosClients.get(`/customers/${id}`)

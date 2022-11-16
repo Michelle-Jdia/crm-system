@@ -4,7 +4,12 @@ const router = express.Router();
 
 const customersController = require('../controllers/customersController');
 
-module.exports = function() {
+// @todo remove useless comments
+// @todo change endpoints to api/v1/customers/:id 
+// @todo save all routes in a file like backend/api/routes.js
+// @todo rename this route to backend/routes/customer.js
+
+module.exports = function () {
   // ### Customers ###
   // post: add new client
   router.post('/customers', customersController.add);

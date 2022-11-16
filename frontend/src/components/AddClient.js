@@ -6,6 +6,11 @@ import axios from "axios";
 function AddClient(props) {
 
     const [ip4, setIP] = useState('');
+    
+    // @todo  const [client, setClient] = useState({}) instead
+    // @todo DONT use the word [client] as it means many things.
+    // eg: use user, customer, buyer, etc... 
+    
     const [client, setClient] = useState({
         name: '',
         lastname: '',
@@ -43,7 +48,7 @@ function AddClient(props) {
         saveClient()
     }
 
-
+    // @todo create a generic function that can do requests and do the try catch behind the scenes.
     const saveClient = () => {
         axiosClients.post('/customers', client)
             .then(res => {
