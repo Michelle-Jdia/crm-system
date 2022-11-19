@@ -4,8 +4,10 @@ import Navbar from './Navbar';
 import Clients from "./Clients";
 import EditClient from "./EditClient";
 import AddClient from "./AddClient";
+import AddNote from "./AddNote";
 import axiosClients from "../config/axiosClients";
 import ViewClient from "./ViewClient";
+import UserNotes from "./UserNotes";
 
 function App() {
 
@@ -77,6 +79,7 @@ function App() {
                             <th scope="col">Name</th>
                             <th scope="col">Phone</th>
                             <th scope="col">email</th>
+                            <th scope="col">options</th>
                         </tr>
                         </thead>
                         {renderClients()}
@@ -91,6 +94,7 @@ function App() {
                             <th scope="col">Name</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Email</th>
+                            <th scope="col">options</th>
                         </tr>
                         </thead>
                         {renderClients()}
@@ -100,6 +104,8 @@ function App() {
                 <Route exact path={'/clients/new'} component={AddClient}/>
                 <Route exact path='/clients/:id/edit' component={EditClient}/>
                 <Route exact path='/clients/:id/view' component={ViewClient}/>
+                <Route exact path='/clients/:id/addnote' component={AddNote}/>
+                <Route exact path='/clients/:id/usernote' component={UserNotes}/>
             </Switch>
         </div>
 

@@ -11,9 +11,6 @@ function Navbar() {
                         <li className="nav-item">
                             <NavLink className="nav-link active" aria-current="page" to="/clients">Clients</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/note">Notes</NavLink>
-                        </li>
                         <li className="nav-item bg-warning ml-auto rounded">
                             <NavLink className="nav-link" to="/clients/new">Add Client</NavLink>
                         </li>
