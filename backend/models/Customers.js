@@ -60,7 +60,7 @@ const customersSchema = new Schema({
         trim: true
     },
     note: {
-        type: String,
+        type: Object,
         trim: true
     }
 });

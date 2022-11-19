@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import axiosClients from "../config/axiosClients";
 import Swal from "sweetalert2";
 import axios from "axios";
+import {useHistory} from 'react-router'
 
 function AddClient(props) {
 
@@ -26,7 +27,7 @@ function AddClient(props) {
         ads: false,
         status: ''
     })
-
+    const history = useHistory()
     //creating function to load ip address from the API
     const getDataIP = async () => {
         const res = await axios.get('https://geolocation-db.com/json/')
@@ -64,7 +65,9 @@ function AddClient(props) {
                         res.data.message,
                         'success!'
                     )
+
                     props.history.push('/clients')
+                    history.go(0)
                 }
             })
     }

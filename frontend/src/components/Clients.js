@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 // @todo rename to client 
 function Clients({
@@ -17,7 +17,7 @@ function Clients({
             <td>{name} {lastname}</td>
             <td>{phone}</td>
             <td>{email}</td>
-            <td>
+            <td className="d-flex justify-content-between align-items-center">
                 <Link to={`/clients/${id}/edit`}
                       className={'btn btn-success mr-1'}
                       role='button'
@@ -25,8 +25,6 @@ function Clients({
                 >
                     Edit
                 </Link>
-            </td>
-            <td>
                 <Link to={`/clients/${id}/view`}
                       className={'btn btn-info mr-1'}
                       role='button'
@@ -34,9 +32,20 @@ function Clients({
                 >
                     View
                 </Link>
-
-            </td>
-            <td>
+                <Link to={`/clients/${id}/note`}
+                      className={'btn btn-outline-info mr-1'}
+                      role='button'
+                      aria-pressed='true'
+                >
+                    Add note
+                </Link>
+                <Link to={`/clients/${id}/usernote`}
+                      className={'btn btn-outline-info mr-1'}
+                      role='button'
+                      aria-pressed='true'
+                >
+                    View notes
+                </Link>
                 <button className='btn btn-danger' type='button' onClick={() => {
                     onDelete(id);
                 }}>

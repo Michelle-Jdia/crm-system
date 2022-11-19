@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axiosClients from "../config/axiosClients";
 import Swal from "sweetalert2";
+import {useHistory} from "react-router";
 
 function EditClient(props) {
     const { id } = props.match.params;
@@ -15,22 +16,19 @@ function EditClient(props) {
         city: '',
         address: '',
         postcode: '',
-        ip: '',
         language: '',
         shares: '',
         ads: false,
         status: ''
     })
+
+    const history = useHistory()
+    //creating function to load ip address from the API
+
     const handleChange = (e) => {
         setClient({
             ...client,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleChkbox = (e) => {
-        setClient({
-            ...client,
+            [e.target.name]: e.target.value,
             ads: e.target.checked
         })
     }
@@ -57,27 +55,29 @@ function EditClient(props) {
                         'success!'
                     )
                     props.history.push('/clients')
-                }
+                    history.go(0)
 
+                }
             })
     }
+    const getClient = () => {
+        axiosClients.get(`/customers/${id}`)
+            .then(res => {
+                if (res.data.name) {
+
+                    setClient(res.data)
+                } else {
+                    console.log('error')
+                }
+            })
+    };
 
     useEffect(() => {
-        const getClient = () => {
-            axiosClients.get(`/customers/${id}`)
-                .then(res => {
-                    if (res.data.name) {
-                        setClient(res.data)
-                    } else {
-                        console.log('error')
-                    }
-                })
-        };
         getClient();
-    }, [id])
+        // eslint-disable-next-line
+    }, [id]);
+
     return (
-
-
         <form className="row g-3" onSubmit={handleSubmit}>
             <div className="form-group col-md-6">
                 <label htmlFor="name">Name</label>
@@ -176,19 +176,6 @@ function EditClient(props) {
                     required
                 />
             </div>
-
-            <div className="form-group">
-                <label htmlFor="ip">ip</label>
-                <input
-                    type="text"
-                    className="form-control"
-                    name="ip"
-                    placeholder="ip"
-                    defaultValue={client.ip}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
             <div className="form-group">
                 <label htmlFor="language">language</label>
                 <input
@@ -198,7 +185,6 @@ function EditClient(props) {
                     placeholder="language"
                     defaultValue={client.language}
                     onChange={handleChange}
-                    required
                 />
             </div>
             <div className="form-group">
@@ -210,7 +196,6 @@ function EditClient(props) {
                     placeholder="shares"
                     defaultValue={client.share}
                     onChange={handleChange}
-                    required
                 />
             </div>
             <div className="form-group">
@@ -230,7 +215,7 @@ function EditClient(props) {
                     <input className="form-check-input"
                            type="checkbox"
                            name="ads"
-                           onChange={handleChkbox}
+                           onChange={handleChange}
                            defaultValue={client.ads}
 
                     />
