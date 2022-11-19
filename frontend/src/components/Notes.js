@@ -16,7 +16,7 @@ function Notes({
             <td>{textNote}</td>
             <td>{noteType}</td>
             <td className="d-flex justify-content-between align-items-center">
-                <Link to={`/clients/${id}/note/edit`}
+                <Link to={`/clients/${id}/noteedit`}
                       className={'btn btn-success mr-1'}
                       role='button'
                       aria-pressed='true'
