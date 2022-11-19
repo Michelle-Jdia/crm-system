@@ -31,7 +31,7 @@ function Clients({
                 >
                     View
                 </Link>
-                <Link to={`/clients/${id}/note`}
+                <Link to={`/clients/${id}/addnote`}
                       className={'btn btn-outline-info mr-1'}
                       role='button'
                       aria-pressed='true'

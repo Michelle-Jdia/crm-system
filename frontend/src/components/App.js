@@ -67,7 +67,6 @@ function App() {
 
 
     return (
-
         <div className="container-fluid">
             <Navbar/>
             <Switch>
@@ -106,9 +105,9 @@ function App() {
                 <Route exact path='/clients/:id/view' component={ViewClient}/>
                 <Route exact path='/clients/:id/addnote' component={AddNote}/>
                 <Route exact path='/clients/:id/usernote' component={UserNotes}/>
+                {/*<Route exact path='/clients/:id/noteedit' component={UserNotes}/>*/}
             </Switch>
         </div>
-
     );
 }
 
