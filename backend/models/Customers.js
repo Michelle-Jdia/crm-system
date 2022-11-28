@@ -1,3 +1,5 @@
+// @todo rename file to customer.js
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;

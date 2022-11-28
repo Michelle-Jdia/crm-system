@@ -11,6 +11,7 @@ const { PORT } = process.env || 5000;
 
 const app = express();
 
+// @todo store the connection string in an .env file.
 
 // conect mongodb
 mongoose.connect('mongodb+srv://admin:admin123@cluster0.cn2lj.mongodb.net/CRM?retryWrites=true&w=majority', {
@@ -18,6 +19,19 @@ mongoose.connect('mongodb+srv://admin:admin123@cluster0.cn2lj.mongodb.net/CRM?re
     useUnifiedTopology: true,
     useCreateIndex: true
 });
+
+// @todo create a global folder for configs 
+// eg: backend/api/config.js
+// config.js has 
+
+/* 
+    export const allowedMethods = ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'];
+
+    export const allowedHeaders = ['Content-Type', 'origin', 'Authorization'];
+
+    etc...
+*/
+
 
 const options = {
     origin: [
@@ -29,6 +43,8 @@ const options = {
     allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
     credentials: true,
 };
+
+// @todo remove useless comments
 
 // enable CORS
 app.use('*', cors(options));
